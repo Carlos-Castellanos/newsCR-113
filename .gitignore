@@ -3,4 +3,3 @@ venv/*
 staticfiles
 mc?.md
 .env
-heroku_config.sh
