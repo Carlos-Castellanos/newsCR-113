@@ -29,24 +29,17 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{%  url 'home' %}">Home</a>
                     </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Sections
+                            Articles
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Headlines</a></li>
-                            <li><a class="dropdown-item" href="#">Sports</a></li>
-                            <li><a class="dropdown-item" href="#">Society</a></li>
-                            <li><a class="dropdown-item" href="#">Business</a></li>
-                            <li><a class="dropdown-item" href="#">Politics</a></li>
-                            {% if request.user.is_authenticated %}
-                            <li><a class="dropdown-item" href="#">New Post</a></li>
+                            <li><a class="dropdown-item" href="{% url 'article_list' %}">List All Articles</a></li>
+                            {% if request.user.is_authenticated and request.user.role.name != "reader" %}
+                            <li><a class="dropdown-item" href="{% url 'article_new' %}">New Article</a></li>
                             {% endif %}
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">About</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -60,8 +53,11 @@
                             <li><a class="dropdown-item" href="{% url 'password_change' %}"><strong>Change
                                         password</strong></a>
                             </li>
+                            {% if request.user.is_authenticated and request.user.role.name != "reader" %}
+                            <li><a class="dropdown-item" href="{% url 'signup' %}"><strong>Create New User</strong></a>
+                            </li>
+                            {% endif %}
                             {% else %}
-                            <li><a class="dropdown-item" href="{% url 'signup' %}"><strong>Signup</strong></a></li>
                             <li><a class="dropdown-item" href="{% url 'login' %}"><strong>Login</strong></a></li>
                             <li><a class="dropdown-item" href="{% url 'password_reset' %}"><strong>Reset
                                         password</strong></a>
@@ -73,12 +69,12 @@
                 </ul>
             </div>
             {% if request.user.is_authenticated %}
-            <h4>Welcome {{ request.user.username }} <h4>
+            <h6>Welcome {{ request.user.username }} |{{request.user.role }}<h6>
                     {% endif %}
 
         </div>
-
     </nav>
+
     {% if messages %}
     {% for message in messages %}
     <div class="notification {{ message.tags}}">

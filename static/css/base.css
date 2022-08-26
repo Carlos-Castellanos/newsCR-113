@@ -1,0 +1,23 @@
+body {
+    color: aliceblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url("https://www.teahub.io/photos/full/233-2331886_jornal-bola-de-vidro-prata-macro-hd-wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+a {
+    color: yellow;
+}
+
+#notes {
+    background: rgb(16, 81, 99);
+    background: linear-gradient(142deg, rgba(16, 81, 99, 0.9579631901588761) 11%, rgba(24, 90, 106, 0.6526410613073355) 45%, rgba(1, 12, 23, 0.59661865234375) 70%);
+}
+
+.border {
+    margin-top: 20px;
+    margin-bottom: auto;
+}

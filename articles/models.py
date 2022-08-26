@@ -24,13 +24,13 @@ class Article(models.Model):
         get_user_model(),
         on_delete=models.CASCADE
     )
-    _type = models.ForeignKey(
+    a_type = models.ForeignKey(
         ArticleType,
         on_delete=models.CASCADE,
         blank=True,
         null=True
     )
-    stauts = models.ForeignKey(
+    status = models.ForeignKey(
         Status,
         on_delete=models.CASCADE,
         blank=True,
@@ -43,4 +43,4 @@ class Article(models.Model):
         return self.title 
 
     def get_absolute_url(self):
-        return reverse("detail", args=[self.id])
+        return reverse("article_detail", args=[self.id])
